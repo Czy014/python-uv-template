@@ -1,0 +1,58 @@
+[project]
+name = "python-uv-template"
+version = "0.1.0"
+description = "This is a Python project template for personal use that uses UV management."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+    "pre-commit>=4.4.0",
+    "ruff>=0.14.5",
+]
+
+## UV Source
+
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+default = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://mirror.sjtu.edu.cn/pytorch-wheels/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu124", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu124", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+
+## Test
+
+[tool.mypy]
+strict  = true
+exclude = ["venv", ".venv"]
+
+## Linter and formatter
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "ARG001", # unused arguments in functions
+]
+
+[tool.ruff.format]
+docstring-code-format     = true
+skip-magic-trailing-comma = true
