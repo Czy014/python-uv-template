@@ -19,20 +19,6 @@ dev = [
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
 default = true
 
-[[tool.uv.index]]
-name = "pytorch-cu124"
-url = "https://mirror.sjtu.edu.cn/pytorch-wheels/cu124"
-explicit = true
-
-[tool.uv.sources]
-torch = [
-  { index = "pytorch-cu124", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-]
-torchvision = [
-  { index = "pytorch-cu124", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-]
-
-
 ## Test
 
 [tool.mypy]
