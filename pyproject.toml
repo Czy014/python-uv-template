@@ -8,9 +8,9 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-    "mypy>=1.18.2",
     "pre-commit>=4.4.0",
     "ruff>=0.14.5",
+    "ty>=0.0.24",
 ]
 
 ## UV Source
@@ -19,11 +19,18 @@ dev = [
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
 default = true
 
-## Test
+## Type checker (ty)
+[tool.ty]
 
-[tool.mypy]
-strict  = true
-exclude = ["venv", ".venv"]
+[tool.ty.rules]
+all = "error"
+
+[tool.ty.analysis]
+respect-type-ignore-comments = true
+
+[tool.ty.terminal]
+output-format = "concise"
+
 
 ## Linter and formatter
 
