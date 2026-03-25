@@ -6,8 +6,7 @@ This is a Python project template for personal use that uses UV management in vs
 ```python
 # install dependencies
 uv sync --dev
-# install project as a package
-uv pip install -e .
+
 # setup pre-commit
 uv run pre-commit install
 ```
