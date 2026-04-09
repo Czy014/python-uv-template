@@ -38,6 +38,7 @@ output-format = "concise"
 
 [tool.ruff]
 fix = true
+line-length = 120
 
 [tool.ruff.lint]
 select = [
